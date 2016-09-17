@@ -1,8 +1,8 @@
 Hi,
 The person serving as your team’s main contact must have already received the project description for your team. Here are the next steps:
 1.	Each team needs to create a shared github repository for their project.   DONE
-2.	The repository name should begin with CS530-16. 
-3.	Add my account (kurkovsky) as a member (not owner!) of your repository.
+2.	The repository name should begin with CS530-16. DONE
+3.	Add my account (kurkovsky) as a member (not owner!) of your repository.  DONE, ALTHOUGH HE'S A COLLABORATOR.  I DON'T SEE MEMBER AS AN OPTION.
 4.	Create a new directory (Documents) inside your repository.
 5.	Place all deliverables into the Documents directory. Be sure to have no other documents in it.
 6.	The file names for all your deliverables must be self-explanatory.
