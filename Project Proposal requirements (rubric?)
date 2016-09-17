@@ -1,11 +1,13 @@
-I CAN'T FIND ANY WAY TO CHANGE FONTS IN THIS SO I'M USING ALL CAPS TO INDICATE COMMENTS I'M MAKING.  THE REST IS FROM THE EMAILS OR WEBSITE FROM PROF.K
+I CAN'T FIND ANY WAY TO CHANGE FONTS IN THIS SO I'M USING ALL CAPS TO INDICATE COMMENTS I'M MAKING.  
+THE REST IS FROM THE EMAILS OR WEBSITE FROM PROF.K
 
 
 Hi,
 The person serving as your team’s main contact must have already received the project description for your team. Here are the next steps:
 1.	Each team needs to create a shared github repository for their project.   DONE
 2.	The repository name should begin with CS530-16. DONE
-3.	Add my account (kurkovsky) as a member (not owner!) of your repository.  DONE, ALTHOUGH HE'S A COLLABORATOR.  I DON'T SEE MEMBER AS AN OPTION.
+3.	Add my account (kurkovsky) as a member (not owner!) of your repository.  DONE, ALTHOUGH HE'S A COLLABORATOR.  
+    I DON'T SEE MEMBER AS AN OPTION.
 4.	Create a new directory (Documents) inside your repository.  DONE
 5.	Place all deliverables into the Documents directory. Be sure to have no other documents in it.
     DUE 7:00 AM, MONDAY, 9/19
@@ -17,14 +19,20 @@ SK
 Submit an informal essay (PDF, 2 pages max) describing the following:
 Intended use of the system: who and how will use the system. (4 pts)
 Its overall functionality: what will the system do, how will the system help its users accomplish their tasks. (3 pts)
-Main components of the system: break down the system into logical or architectural components and provide the rationale for this breakdown. (3 pts)
+Main components of the system: break down the system into logical or architectural components and provide the rationale for this 
+breakdown. (3 pts)
 
 
 Here’s a brief project description I would like your team to work on. We can discuss it in more details on Wednesday.
 
 CTFastrak application
-Real-time information about vehicle locations, arrival/departure predictions and service alerts is available for CTfastrak services. This information is provided via real-time data feeds in GTFS-realtime and JSON formats. Route structure and schedule data for CTfastrak services is also available in GTFS format. More info is available at https://www.cttransit.com/about/developers 
-Objective: build a map-based website or a mobile app that would display CTFastrak route map along with all bus stops. All buses will be identified on the map. All stops will have information about the next few approaching buses. Given the user’s destination and the current location on the map, the system will be able to provide a recommendation for the nearest bust stop offering the fastest arrival to the destination. 
+Real-time information about vehicle locations, arrival/departure predictions and service alerts is available for CTfastrak services. 
+This information is provided via real-time data feeds in GTFS-realtime and JSON formats. Route structure and schedule data for 
+CTfastrak services is also available in GTFS format. More info is available at https://www.cttransit.com/about/developers 
+Objective: build a map-based website or a mobile app that would display CTFastrak route map along with all bus stops. All buses 
+will be identified on the map. All stops will have information about the next few approaching buses. Given the user’s destination 
+and the current location on the map, the system will be able to provide a recommendation for the nearest bust stop offering the 
+fastest arrival to the destination. 
 
 
 
