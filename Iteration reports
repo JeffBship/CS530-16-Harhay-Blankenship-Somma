@@ -1,0 +1,26 @@
+Iteration reports (3 @ 10 pts each, due 11/3/16, 11/17/16, 12/6/16)
+
+At the end of each iteration, submit an iteration report (PDF, no page limit) containing the following:
+
+What functionality does the system have at the end of this iteration? (2 pts)
+
+List the user stories that you have implemented at this iteration. (1 pt)
+
+Did you end up making any changes to any of these user stories? Did you break down further any the user stories? 
+Did you identify any new user stories during this iteration and, if so, did you add them to the product backlog or 
+decide to implement them right away? Explain. (2 pts)
+
+What are the "lessons learned" at the end of this iteration? What would you do differently next time? Explain. (2 pt)
+
+Provide an updated numbered list of all user stories yet to be implemented; indicate pre- and post-conditions. (1 pt)
+
+(2 pts)
+If this is not the last iteration:
+Given the current functionality of the system and taking into account the pre- and post-conditions, identify a 
+subset of user stories to be implemented during the next iteration. Be sure that the cumulative size of the selected 
+user stories is about 1/3 of the size of the full backlog. Describe the functionality that your (partially implemented) 
+system will have at the end of this iteration.
+
+If this is the last iteration:
+Are there any user stories left unimplemented in the backlog? Are there any new user stories that you would consider 
+adding to the backlog. List these user stories and explain them.
