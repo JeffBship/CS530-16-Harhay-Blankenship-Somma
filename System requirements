@@ -1,0 +1,21 @@
+System requirements (10 pts, due 10/6/16)
+Submit a system requirements document (PDF with a UML use case diagram, no page limit) as described below:
+
+Begin with a narrative to give a general overview of the system's functional requirements. Provide one big use case diagram 
+illustrating the overall functionality of the system. Describe each use case in an easy to understand natural language. (2 pts)
+
+Using the use case diagram as a starting point, convert each use case into a user story. 
+Organize your user stories as a numbered list. (2 pts)
+
+A typical format of the user story is as follows: As a user role, I want goal so that reason:
+The user role represents an actor or a developer who benefits from this story;
+The goal of the story is a feature or function in the system, a tool, or a part of a production pipeline;
+The reason describes the benefit to the customer or user when this feature or function is used.
+For each user story, provide a set of pre- and post-conditions (refer to each corresponding user story by their numbers). 
+Note: list pre- and post-conditions under the corresponding user story. Note: there should be a single list of user stories in your document. (2 pts)
+Are there any user stories that are too big or complex? Can some of them be decomposed into smaller user stories? 
+For each user story, mention whether or not it may need to be broken down (this will be done later). (1 pt)
+
+Provide a separate list of any relevant nonfunctional requirements. (1 pt)
+
+Include a glossary that defines all relevant terms that may have a special meaning in the context of the system. (2 pts)
