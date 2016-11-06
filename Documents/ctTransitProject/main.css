@@ -1,0 +1,8 @@
+.busPopup {
+	padding:5px;
+	border-color: rgb(233,101,101);
+	border-width: 5px;
+	border-radius: 5px;
+	background-color: rgb(206,255,190);
+	width: 50%;
+}

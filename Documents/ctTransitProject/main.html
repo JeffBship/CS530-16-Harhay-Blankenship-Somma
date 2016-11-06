@@ -8,11 +8,62 @@
         width: 100%;
        }
     </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="main.css">
   </head>
   <body>
     <h3>CT Transit</h3>
     <div id="map"></div>
-    <script src="main.js"></script>
+    <h3><div>Icons made by <a href="http://www.freepik.com" title="Freepik">Freepik</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div></h3>
+
+    <div class='busPopup container'>
+    	<div class='col-xs-9'>
+
+    	</div>
+    	<div class='col-xs-3'>
+
+    	</div>
+    		<h3 class='text-center'>B123</h3>
+    	<table class="table-condensed">
+    		<tr>
+    			<th>Time</th>
+    			<th>Stop Location</th>
+    		</tr>
+    		<tr>
+    			<td>1:23 pm</td>
+    			<td>New Britain Ave</td>
+    		</tr>
+    		<tr>
+    			<td>2:30 pm</td>
+    			<td>Park St</td>
+    		</tr>
+    		<tr>
+    			<td>3:40 pm</td>
+    			<td>Main St</td>
+    		</tr>
+    	</table>
+    	<div class="input-group">
+    		<div class='col-xs-3'>
+		      <span class="input-group-addon">
+		        <input type="checkbox">
+		      </span>
+		    </div>
+		    <div class='col-xs-9'>
+		    	<text>Alert to changes</text>
+		    </div>
+    </div><!-- /input-group -->
+    </div>
+
+    <div class='routePopup'>
+
+    </div>
+
+    <
+
+    <script src = "main.js"></script>
+    <script src = "map.js"></script>
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhvJ1tcnrZGOKxyLrPlN29HuWhbrWet90&callback=initMap">
     </script>

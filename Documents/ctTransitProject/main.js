@@ -1,11 +1,16 @@
-function initMap() {
-        var uluru = {lat: 41.7637, lng: -72.6851};
-        var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 9,
-          center: uluru
-        });
-        var marker = new google.maps.Marker({
-          position: uluru,
-          map: map
-        });
-      }
+function getBusLocations() {
+  var busLocations = $.getJSON( "http://65.213.12.244/realtimefeed/vehicle/vehiclepositions.json", function() {
+      busLocationsParse = JSON.parse(busLocations.responseText)
+        console.log(busLocationsParse["entity"][0])
+        busLat = (busLocationsParse["entity"][0]["vehicle"]["position"]["latitude"])
+        busLong = (busLocationsParse["entity"][0]["vehicle"]["position"]["latitude"])
+        console.log("busLat: "+busLat)
+        for (bus in busLocationsParse["entity"]){
+           console.log("Latitude: "+busLocationsParse["entity"][bus]["vehicle"]["position"]["latitude"])
+           console.log("Longitude: "+busLocationsParse["entity"][bus]["vehicle"]["position"]["longitude"])
+        }
+      return ([busLat,busLong]);
+  })
+}
+
+//var testBusLoc = getBusLocations()
