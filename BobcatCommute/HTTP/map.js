@@ -88,18 +88,28 @@ function initMap() {
     {lat: 41.766467,lng: -72.673165}
 
     ];
+	
+    var routePosition = {lat: 41.764092, lng: -72.673866};
 
     var routePath = new google.maps.Polyline({
           path: shapeCoords,
           geodesic: true,
           strokeColor: '#FF0000',
           strokeOpacity: 1.0,
-          strokeWeight: 2
+          strokeWeight: 2,
+		  position: routePosition
         });
 
     routePath.setMap(map);
 
-
+    var routeInfoWindowOptions = {
+        content: 'Route Schedule!'
+    };
+    
+    var routeInfoWindow = new google.maps.InfoWindow(routeInfoWindowOptions);
+    google.maps.event.addListener(routePath,'click',function(e){
+      routeInfoWindow.open(map, routePath);
+    });
   }
 
 //{lat: 41.7637, lng: -72.6851};
