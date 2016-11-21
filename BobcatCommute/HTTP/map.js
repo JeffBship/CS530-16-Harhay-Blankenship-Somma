@@ -1,9 +1,5 @@
 function initMap() {
-//	console.log("Init Map")
-//    var testBusLoc = getBusLocations()
-    //testBusLat = (testBusLoc[0])
-    //testBusLong = (testBusLoc[1])
-//    console.log("testBusLat: "+testBusLoc)
+	console.log("Init Map")
 
     var icons = {
       busIcons: {icon:'bus-side-view.png'}
@@ -51,34 +47,6 @@ function initMap() {
 	// END of AutoComplete Search Box
 	/////////////////////////////////////////////////////////////
 	
-
-	
-	
-	
-	
-    var busPosition = {lat: 41.7637, lng: -72.6851};
-	
-	var busMarkerOptions = {
-    	position: busPosition,
-		icon: icons["busIcons"].icon,
-		map: map
-    };
-    	
-	var busMarker = new google.maps.Marker(busMarkerOptions);
-    busMarker.setMap(map);
-	
-	
-    var busInfoWindowOptions = {
-        content: 'Bus Schedule!'
-    };
-    
-    var busInfoWindow = new google.maps.InfoWindow(busInfoWindowOptions);
-    google.maps.event.addListener(busMarker,'click',function(e){
-      busInfoWindow.open(map, busMarker);
-    });
-	
-	
-
 	
     var shapeCoords = [
     {lat: 41.764092,lng: -72.673866},
@@ -110,6 +78,101 @@ function initMap() {
     google.maps.event.addListener(routePath,'click',function(e){
       routeInfoWindow.open(map, routePath);
     });
-  }
 
-//{lat: 41.7637, lng: -72.6851};
+		
+	
+    var busLocationsRaw = $.getJSON( "http://65.213.12.244/realtimefeed/vehicle/vehiclepositions.json", function() {
+    //var busLocationsRaw = $.getJSON("googlha_transit/vehiclepositions.json", function() {
+  
+    busLocationsParse = JSON.parse(busLocationsRaw.responseText)
+        //console.log(busLocationsParse["entity"][0])
+
+    busLat = (busLocationsParse["entity"][0]["vehicle"]["position"]["latitude"])
+    busLong = (busLocationsParse["entity"][0]["vehicle"]["position"]["longitude"])
+    console.log("busLat: "+busLat+"  busLong: "+busLong)
+	
+	var i=0;
+	var busLocationsArray = [];
+	
+    for (bus in busLocationsParse["entity"]){
+		busLocationsArray.push(new Vehicle(busLocationsParse["entity"][bus]["id"], busLocationsParse["entity"][bus]["vehicle"]["position"]["latitude"], busLocationsParse["entity"][bus]["vehicle"]["position"]["longitude"], busLocationsParse["entity"][bus]["vehicle"]["trip"]["route_id"]));
+         //console.log("Name: "+busLocationsParse["entity"][bus]["id"])
+         //console.log("Latitude: "+busLocationsParse["entity"][bus]["vehicle"]["position"]["latitude"])
+         //console.log("Longitude: "+busLocationsParse["entity"][bus]["vehicle"]["position"]["longitude"])
+		i = i + 1;
+    }
+	
+	console.log(busLocationsArray[0])
+	console.log(busLocationsArray[1])
+	console.log(busLocationsArray[2])
+	
+	//var busPosition = {lat: 41.7637, lng: -72.6851};
+	
+	//var busMarkerOptions = {
+    //	position: busPosition,
+	//	icon: icons["busIcons"].icon,
+	//	map: map
+    //};
+    	
+	//var busMarker = new google.maps.Marker(busMarkerOptions);
+    //busMarker.setMap(map);
+	
+    //var busInfoWindowOptions = {
+    //    content: 'Bus Schedule!'
+    //};
+    
+    //var busInfoWindow = new google.maps.InfoWindow(busInfoWindowOptions);
+    //google.maps.event.addListener(busMarker,'click',function(e){
+    //  busInfoWindow.open(map, busMarker);
+
+	var busMarker;
+	var busInfoWindowOptions;
+	var busInfoWindow;
+	
+	for (var i=0; i<busLocationsArray.length; i++) {  
+		console.log(busLocationsArray[i])
+		
+		busMarker = new google.maps.Marker({
+         		  position: new google.maps.LatLng(busLocationsArray[i].latitude, busLocationsArray[i].longitude),
+         		  icon: icons["busIcons"].icon,
+				  map: map
+    			  });
+	
+		busInfoWindowOptions = {
+        		content: busLocationsArray[i].name+' Bus Schedule!'
+    	};
+		
+		busInfoWindow = new google.maps.InfoWindow(busInfoWindowOptions);
+    	
+		//google.maps.event.addListener(busMarker,'click', function(busMarker, i) {
+		//		busInfoWindow.open(map, busMarker);
+		//		}(busMarker, i));
+	
+		google.maps.event.addListener(busMarker, 'click', (function(busMarker, i) {
+           //return function(busMarker, i) {
+             //infowindow.setContent(busLocationsArray[i].name);
+             busInfoWindow.open(map, busMarker);
+         	// }
+    	 	 })(busMarker, i));
+	/*	*/
+	}
+	
+    
+  });
+
+};
+
+function Vehicle(name, latitude, longitude, route_id) {
+	this.name = name;
+	this.latitude = latitude;
+	this.longitude = longitude;
+	this.route_id = route_id;
+};
+
+function getRoutes() {
+  var routeShapes = $.getJSON("googlha_transit/shapes.txt")
+  var routes = $.getJSON("googlha_transit/routes.txt")
+};
+
+
+
