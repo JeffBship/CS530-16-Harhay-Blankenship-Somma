@@ -91,8 +91,15 @@ function initMap() {
 				busLocationsParse["entity"][bus]["id"], 
 				busLocationsParse["entity"][bus]["vehicle"]["position"]["latitude"], 
 				busLocationsParse["entity"][bus]["vehicle"]["position"]["longitude"], 
-				busLocationsParse["entity"][bus]["vehicle"]["trip"]["route_id"]
-		));
+				busLocationsParse["entity"][bus]["vehicle"]["trip"]["route_id"],
+				busLocationsParse["entity"][bus]["alert"],
+				busLocationsParse["entity"][bus]["trip_update"],
+				busLocationsParse["entity"][bus]["vehicle"]["trip"]["schedule_relationship"],
+				busLocationsParse["entity"][bus]["vehicle"]["trip"]["start_date"],
+				busLocationsParse["entity"][bus]["vehicle"]["trip"]["trip_id"],
+				busLocationsParse["entity"][bus]["vehicle"]["label"],
+				busLocationsParse["entity"][bus]["vehicle"]["id"]
+				));
     }
 		
 	var busMarker;
@@ -112,9 +119,11 @@ function initMap() {
            return function() {
              busInfoWindow.setContent(
 			 			'<div class="busID">'
-			 			+busLocationsArray[i].name
-						+'<br>'
-						+'Bus Schedule!'
+			 			+busLocationsArray[i].id
+						+'</div>'
+						+'Alert: '+busLocationsArray[i].alert+'<br>'
+						+'Route_ID: '+busLocationsArray[i].route_id+'<br>'
+						+'Trip_ID: '+busLocationsArray[i].trip_id
 						);
              busInfoWindow.open(map, busMarker);
          	 }
@@ -126,11 +135,30 @@ function initMap() {
 }; // end function initMap()
 
 
-function Vehicle(name, latitude, longitude, route_id) {
-	this.name = name;
+function Vehicle(
+		 id, 
+		 latitude, 
+		 longitude, 
+		 route_id,
+		 alert,
+		 trip_update,
+		 schedule_relationship,
+		 start_date,
+		 trip_id,
+		 label,
+		 vehicle_id
+		 ) {
+	this.id = id;
 	this.latitude = latitude;
 	this.longitude = longitude;
 	this.route_id = route_id;
+	this.alert = alert;
+	this.trip_update = trip_update;
+	this.schedule_relationship = schedule_relationship;
+	this.start_date = start_date;
+	this.trip_id = trip_id;
+	this.label = label;
+	this.vehicle_id = vehicle_id;
 };
 
 
