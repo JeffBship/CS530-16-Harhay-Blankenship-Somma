@@ -85,49 +85,27 @@ function initMap() {
     //var busLocationsRaw = $.getJSON("googlha_transit/vehiclepositions.json", function() {
   
     busLocationsParse = JSON.parse(busLocationsRaw.responseText)
-        //console.log(busLocationsParse["entity"][0])
 
-    busLat = (busLocationsParse["entity"][0]["vehicle"]["position"]["latitude"])
-    busLong = (busLocationsParse["entity"][0]["vehicle"]["position"]["longitude"])
-    console.log("busLat: "+busLat+"  busLong: "+busLong)
+    //busLat = (busLocationsParse["entity"][0]["vehicle"]["position"]["latitude"])
+    //busLong = (busLocationsParse["entity"][0]["vehicle"]["position"]["longitude"])
+    //console.log("busLat: "+busLat+"  busLong: "+busLong)
 	
 	var i=0;
 	var busLocationsArray = [];
 	
     for (bus in busLocationsParse["entity"]){
-		busLocationsArray.push(new Vehicle(busLocationsParse["entity"][bus]["id"], busLocationsParse["entity"][bus]["vehicle"]["position"]["latitude"], busLocationsParse["entity"][bus]["vehicle"]["position"]["longitude"], busLocationsParse["entity"][bus]["vehicle"]["trip"]["route_id"]));
-         //console.log("Name: "+busLocationsParse["entity"][bus]["id"])
-         //console.log("Latitude: "+busLocationsParse["entity"][bus]["vehicle"]["position"]["latitude"])
-         //console.log("Longitude: "+busLocationsParse["entity"][bus]["vehicle"]["position"]["longitude"])
+		busLocationsArray.push(new Vehicle(
+				busLocationsParse["entity"][bus]["id"], 
+				busLocationsParse["entity"][bus]["vehicle"]["position"]["latitude"], 
+				busLocationsParse["entity"][bus]["vehicle"]["position"]["longitude"], 
+				busLocationsParse["entity"][bus]["vehicle"]["trip"]["route_id"]
+		));
 		i = i + 1;
     }
-	
-	console.log(busLocationsArray[0])
-	console.log(busLocationsArray[1])
-	console.log(busLocationsArray[2])
-	
-	//var busPosition = {lat: 41.7637, lng: -72.6851};
-	
-	//var busMarkerOptions = {
-    //	position: busPosition,
-	//	icon: icons["busIcons"].icon,
-	//	map: map
-    //};
-    	
-	//var busMarker = new google.maps.Marker(busMarkerOptions);
-    //busMarker.setMap(map);
-	
-    //var busInfoWindowOptions = {
-    //    content: 'Bus Schedule!'
-    //};
-    
-    //var busInfoWindow = new google.maps.InfoWindow(busInfoWindowOptions);
-    //google.maps.event.addListener(busMarker,'click',function(e){
-    //  busInfoWindow.open(map, busMarker);
-
+		
 	var busMarker;
-	var busInfoWindowOptions;
-	var busInfoWindow;
+	var busInfoWindow = new google.maps.InfoWindow();
+
 	
 	for (var i=0; i<busLocationsArray.length; i++) {  
 		console.log(busLocationsArray[i])
@@ -137,24 +115,14 @@ function initMap() {
          		  icon: icons["busIcons"].icon,
 				  map: map
     			  });
-	
-		busInfoWindowOptions = {
-        		content: busLocationsArray[i].name+' Bus Schedule!'
-    	};
-		
-		busInfoWindow = new google.maps.InfoWindow(busInfoWindowOptions);
-    	
-		//google.maps.event.addListener(busMarker,'click', function(busMarker, i) {
-		//		busInfoWindow.open(map, busMarker);
-		//		}(busMarker, i));
-	
+	   	
 		google.maps.event.addListener(busMarker, 'click', (function(busMarker, i) {
-           //return function(busMarker, i) {
-             //infowindow.setContent(busLocationsArray[i].name);
+           return function() {
+             busInfoWindow.setContent(busLocationsArray[i].name+' Bus Schedule!');
              busInfoWindow.open(map, busMarker);
-         	// }
+         	 }
     	 	 })(busMarker, i));
-	/*	*/
+
 	}
 	
     
