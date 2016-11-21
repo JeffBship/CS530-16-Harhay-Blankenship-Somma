@@ -7,7 +7,7 @@ function initMap() {
     
 	var mapOptions = {
         center: new google.maps.LatLng(41.7637,-72.6851),
-        zoom: 15,
+        zoom: 13,
         mapTypeId: google.maps.MapTypeId.ROADMAP
     };
 	
@@ -39,22 +39,19 @@ function initMap() {
       infoWindow.setContent('<div><strong>' + place.name + '</strong><br>');
       infoWindow.open(map, marker);
       google.maps.event.addListener(marker,'click',function(e){
-    
         infoWindow.open(map, marker);
-    
       });
     }); 
 	// END of AutoComplete Search Box
 	/////////////////////////////////////////////////////////////
 	
-	
+	// Testing //
     var shapeCoords = [
     {lat: 41.764092,lng: -72.673866},
     {lat: 41.765766,lng: -72.673357},
     {lat: 41.765968,lng: -72.673294},
     {lat: 41.766371,lng: -72.673177},
     {lat: 41.766467,lng: -72.673165}
-
     ];
 	
     var routePosition = {lat: 41.764092, lng: -72.673866};
@@ -64,7 +61,7 @@ function initMap() {
           geodesic: true,
           strokeColor: '#FF0000',
           strokeOpacity: 1.0,
-          strokeWeight: 2,
+          strokeWeight: 4,
 		  position: routePosition
         });
 
@@ -78,21 +75,17 @@ function initMap() {
     google.maps.event.addListener(routePath,'click',function(e){
       routeInfoWindow.open(map, routePath);
     });
-
+	// END Testing //
 		
-	
+	// Pull and parse the real-time vehicle location information
     var busLocationsRaw = $.getJSON( "http://65.213.12.244/realtimefeed/vehicle/vehiclepositions.json", function() {
-    //var busLocationsRaw = $.getJSON("googlha_transit/vehiclepositions.json", function() {
+    // Would prefer to pull this data locally while testing, but can't get it to work //var busLocationsRaw = $.getJSON("googlha_transit/vehiclepositions.json", function() {
   
     busLocationsParse = JSON.parse(busLocationsRaw.responseText)
-
-    //busLat = (busLocationsParse["entity"][0]["vehicle"]["position"]["latitude"])
-    //busLong = (busLocationsParse["entity"][0]["vehicle"]["position"]["longitude"])
-    //console.log("busLat: "+busLat+"  busLong: "+busLong)
 	
-	var i=0;
 	var busLocationsArray = [];
 	
+	// Push all the vehicle data to an array of Vehicle objects.
     for (bus in busLocationsParse["entity"]){
 		busLocationsArray.push(new Vehicle(
 				busLocationsParse["entity"][bus]["id"], 
@@ -100,13 +93,12 @@ function initMap() {
 				busLocationsParse["entity"][bus]["vehicle"]["position"]["longitude"], 
 				busLocationsParse["entity"][bus]["vehicle"]["trip"]["route_id"]
 		));
-		i = i + 1;
     }
 		
 	var busMarker;
 	var busInfoWindow = new google.maps.InfoWindow();
-
 	
+	// Draw all the vehicles on the map, and create pop-up windows for each.
 	for (var i=0; i<busLocationsArray.length; i++) {  
 		console.log(busLocationsArray[i])
 		
@@ -118,17 +110,21 @@ function initMap() {
 	   	
 		google.maps.event.addListener(busMarker, 'click', (function(busMarker, i) {
            return function() {
-             busInfoWindow.setContent(busLocationsArray[i].name+' Bus Schedule!');
+             busInfoWindow.setContent(
+			 			'<div class="busID">'
+			 			+busLocationsArray[i].name
+						+'<br>'
+						+'Bus Schedule!'
+						);
              busInfoWindow.open(map, busMarker);
          	 }
     	 	 })(busMarker, i));
-
-	}
+	} // end for loop
 	
-    
-  });
+  }); // end JSON function for busLocationsRaw
 
-};
+}; // end function initMap()
+
 
 function Vehicle(name, latitude, longitude, route_id) {
 	this.name = name;
@@ -136,6 +132,7 @@ function Vehicle(name, latitude, longitude, route_id) {
 	this.longitude = longitude;
 	this.route_id = route_id;
 };
+
 
 function getRoutes() {
   var routeShapes = $.getJSON("googlha_transit/shapes.txt")
