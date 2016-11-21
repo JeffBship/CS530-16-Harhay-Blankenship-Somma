@@ -8,6 +8,13 @@
     height: 25px;
 }
 
+.busID {
+    text-align: center;
+    font-weight: bold;
+    font-size: 20px;
+    font-family: arial, sans-serif;
+}
+
 .busPopup {
 	padding:5px;
 	border-color: rgb(233,101,101);
