@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8"> 
+    <title>BobcatCommute</title>
+    
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src = "map.js"></script>
+    
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhvJ1tcnrZGOKxyLrPlN29HuWhbrWet90&callback=initMap&libraries=places">
+    </script>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="main.css">
+    
+  </head>
+  
+  
+  
+  
+  
+  <body>
+    <h3> <center>BobcatCommute</center></h3>
+    
+    <p id="current_time">current time</p>
+    <hr>
+    <p id="map_time"> map_time </p>
+    
+    
+    
+    <!-- <input type="text" id="autocomplete"> -->
+    
+    <div id="container">
+        <div id="left">
+        <div id="origin"></div>
+        </div>
+        <div id="middle">
+            <div id="map"></div>
+        </div>
+        
+        <div id="right">
+            <div id="destination"></div>
+        </div>
+    </div>
+    <br>
+    
+    <div id="selection">
+        
+        <div id="selection_left">
+            <p id="stop_selection"></p>
+            <p>
+            <button name="button" value="OK" onclick="set_origin()" 
+                type="button">Set Origin</button>
+            <button name="button" value="OK" onclick="set_destination()"
+                type="button">Set Destination</button>
+            
+            </p>
+            
+        </div>
+        
+        <div id="selection_middle">
+            
+            <!--
+            <form action="javascript: busSearch();">
+                Click a bus or enter a bus number:<br>
+                <input type="text" name="busnum" value=""><br><br>
+                <input type="submit">
+            </form> 
+            -->
+            
+            <p id="current_selection">
+            </p>
+        </div>
+        
+        
+        
+        <div id="selection_right">
+            <p id="right_text">
+            
+            </p>
+        </div> 
+        
+    </div>
+    
+
+  </body>
+</html>

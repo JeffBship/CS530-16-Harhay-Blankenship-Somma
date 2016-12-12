@@ -1,0 +1,1 @@
+{"entity":[{"alert":null,"id":"1110","trip_update":null,"vehicle":{"position":{"latitude":41.786644,"longitude":-72.6569061},"timestamp":1481522438,"trip":{"route_id":"8652","schedule_relationship":0,"start_date":"20161212","trip_id":"925506"},"vehicle":{"id":"2994","label":"1110"}}}],"header":{"incrementality":0,"timestamp":1481522442}}
