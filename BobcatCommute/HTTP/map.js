@@ -169,10 +169,16 @@ function initMap() {
         // Would prefer to pull this data locally while testing, but can't get it to work 
         // var busLocationsRaw = $.getJSON("googlha_transit/vehiclepositions.json", function() {
 
-        busLocationsParse = JSON.parse(busLocationsRaw.responseText)
-
+        busLocationsParse = JSON.parse(busLocationsRaw.responseText);
+        //document.getElementById("current_selection").innerHTML = JSON.stringify(busLocationsParse);
+        //var test = busLocationsParse.entity[0].id;
+        
+        //alert(test);
+        
+        
         var busLocationsArray = [];
 
+/*
         // Push all the vehicle data to an array of Vehicle objects.
         for (bus in busLocationsParse["entity"]){
             busLocationsArray.push(new Vehicle(
@@ -189,18 +195,22 @@ function initMap() {
                 busLocationsParse["entity"][bus]["vehicle"]["id"]
                 ));
         }
+                */
 
         var busMarker;
         var busInfoWindow = new google.maps.InfoWindow();
         
+        
+        
         //save buslocations in local storage for functions to use
-        localStorage.setItem('busLocations', JSON.stringify(busLocationsArray) );
+        //document.getElementById("current_selection").innerHTML = JSON.stringify(busLocationsParse.entity);
+        localStorage.setItem('busLocations', JSON.stringify(busLocationsParse.entity) );
         
         // Draw all the vehicles on the map, and create pop-up windows for each.
-        for (var i=0; i<busLocationsArray.length; i++) {  
-            console.log(busLocationsArray[i])
-            busPosition = new google.maps.LatLng(busLocationsArray[i].latitude, 
-                                                 busLocationsArray[i].longitude)
+        for (var i=0; i<busLocationsParse.entity.length; i++) {  
+            console.log(busLocationsParse.entity[i])
+            busPosition = new google.maps.LatLng(busLocationsParse.entity[i].vehicle.position.latitude, 
+                                                 busLocationsParse.entity[i].vehicle.position.longitude)
             busMarker = new google.maps.Marker({
                 position: busPosition,
                 icon: icons["busIcons"].icon,
@@ -210,20 +220,24 @@ function initMap() {
                 
             google.maps.event.addListener(busMarker, 'click', (function(busMarker, i) {
                 return function() {
+                    
                     var Content = 'See info below.';
                     busInfoWindow.setContent(Content);
                     busInfoWindow.open(map, busMarker);
                     setTimeout(function(){busInfoWindow.close();}, '1000');
-                    var trip = busLocationsArray[i].trip_id
-                    var current_selection = '' //Current Bus selected <br>' 
-                            + 'Bus : ' + busLocationsArray[i].id + '<br>'
-                            + 'Route: ' + busLocationsArray[i].route + '<br>'
-                            //+ 'trip_id: ' + trip + '<br>'
+                    
+                    var trip = busLocationsParse.entity[i].vehicle.trip.trip_id;
+                    //document.getElementById("current_selection").innerHTML = "hegggglllllo";
+                    var current_selection = ' ' //Current Bus selected <br>' 
+                            + 'Bus : ' + busLocationsParse.entity[i].id + '<br>'
+                            + 'Route_id: ' + busLocationsParse.entity[i].vehicle.trip.route_id + '<br>'
+                            + 'trip_id: ' + trip + '<br>'
                             + 'upcoming stops: <br>';
                     var dataString = localStorage.getItem('updateData');
                     var data = JSON.parse(dataString);
                     
                     // search the updates and pick out the ones for this trip
+                    
                     for (var k=0; k<data.entity.length; k++) {  
                         if (trip == data.entity[k].id) {
                             for (var m=0; m<data.entity[k].trip_update.stop_time_update.length; m++) {
@@ -249,7 +263,7 @@ function initMap() {
                                 }
                             }
                         }
-                    }
+                    } 
                     document.getElementById("current_selection").innerHTML = current_selection;
                 }            
             }
@@ -5036,6 +5050,5 @@ var STOPS = [
 [12775,"Simsbury Rd and Brownleigh Rd",41.801659,-72.737063],
 [12781,"E Center St and Lenox St",41.77751,-72.510922]
 ];
-
 
 
