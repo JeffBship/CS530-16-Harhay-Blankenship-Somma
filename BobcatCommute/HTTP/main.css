@@ -1,6 +1,51 @@
+#container {height: 100%; width:100%; font-size:0;}
+
+
+#left, #middle, #right {
+    display: inline-block; 
+    *display: inline; 
+    zoom: 1; 
+    vertical-align: top; 
+    font-size: 12px;}
+
+#left {width: 25%; background: #DAF7A6;}
+#middle {width: 50%; background: #05EFF5;}
+#right {width: 25%; background: #F6F64D;}
+
+#selection {height: 100%; width:100%; font-size:0;
+    border-style: solid;
+    border-color: black;
+    border-width: 2px;}
+#selection_left, #selection_middle, #selection_right {
+    display: inline-block; 
+    *display: inline; 
+    zoom: 1; 
+    vertical-align: top; 
+    font-size: 12px;}
+
+#selection_left {width: 50%; background: #DAF7A6;
+    border-style: solid;
+    border-color: black;
+    border-width: 1px;}
+#selection_middle {width: 50%; background: #05EFF5;text-align: left;
+    border-style: solid;
+    border-color: black;
+    border-width: 1px;}
+#selection_right {width: 0%; background: #EFEFEF;
+    border-style: solid;
+    border-color: black;
+    border-width: 1px;}
+
+
+
+
 #map {
-    height: 400px;
+    margin: auto;
+    height: 350px;
     width: 100%;
+    border-style: solid;
+    border-color: black;
+    border-width: 2px;
 }
 
 #autocomplete {
@@ -62,3 +107,5 @@
 .centerBox {
 	text-align: center;
 }
+
+.center { text-align: center;}

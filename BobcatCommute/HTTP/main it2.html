@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8"> 
+    <title>BobcatCommute</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="main.css">
+  </head>
+  
+  <body>
+      
+    <h3 class="center">BobcatCommute</h3>
+	<input type="text" id="autocomplete">
+	<div id="map"></div>
+ 
+    <div class='busPopup container'>
+	    <h3 class="center">B123</h3>
+    	<table class="table-condensed">
+    		<tr><th>Time</th><th>Stop Location</th></tr>
+    		<tr>
+    			<td>1:99 pm</td>
+    			<td>New Britain Ave</td>
+    		</tr>
+    		<tr>
+    			<td>2:30 pm</td>
+    			<td>Park St</td>
+    		</tr>
+    		<tr>
+    			<td>3:40 pm</td>
+    			<td>Main St</td>
+    		</tr>
+    	</table>
+    	<div class="input-group">
+    		<div class='col-xs-3'>
+		      <span class="input-group-addon">
+		        <input type="checkbox">
+		      </span>
+		    </div>
+		    <div class='col-xs-9'>
+		    	<text>Alert to changes</text>
+		    </div>
+    	</div><!-- /input-group -->
+    </div>
+
+    <div class='routePopup container'>
+	    <div class='row'>
+		    <div class='col-xs-6'>
+		    	Origin:
+		    </div>
+		    <div class='col-xs-6'>
+		    	Destination:
+		    </div>
+		  </div>
+	    <div class='row'>
+		    <div class='col-xs-6'>
+		    	Stanly and Ella Grasso
+		    </div>
+		    <div class='col-xs-6'>
+		    	34th and Vine
+		    </div>
+		  </div>
+		  <div class='row'>
+		    <div class='col-xs-4'>
+		    	7:20am
+		    </div>
+		    <div class='col-xs-4 centerBox'>
+		    	<span class='blueBox'>62</span>
+		    </div>
+		    <div class='col-xs-4'>
+		    	8:10am
+		    </div>
+		  </div>
+		  <div class='row'>
+		    <div class='col-xs-4'>
+		    	7:45am
+		    </div>
+		    <div class='col-xs-2 leftBox'>
+		    	<span class='greenBox'>62</span>
+		    </div>
+		    <div class='col-xs-2 rightBox'>
+		    	<span class='redBox'>62</span>
+		    </div>
+		    <div class='col-xs-4'>
+		    	8:35am
+		    </div>
+		  </div>
+		  <div class='row'>
+		    <div class='col-xs-4'>
+		    	7:50am
+		    </div>
+		    <div class='col-xs-4 centerBox'>
+		    	<span class='greenBox'>62</span>
+		    </div>
+		    <div class='col-xs-4'>
+		    	9:50 am
+		    </div>
+		  </div>
+    </div>
+
+    <script src = "map.js"></script>
+
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhvJ1tcnrZGOKxyLrPlN29HuWhbrWet90&callback=initMap&libraries=places">
+    </script>
+
+  </body>
+</html>
